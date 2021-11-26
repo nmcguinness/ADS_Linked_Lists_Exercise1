@@ -9,7 +9,6 @@ using namespace std;
 2. size, clear
 3. search
 4. predicate
-
 */
 
 template <typename E>
@@ -22,6 +21,10 @@ public:
 	SimpleNode(E data) {
 		this->data = data;
 		pNext = nullptr;
+	}
+
+	E getData() const {
+		return this->data;
 	}
 
 	SimpleNode* getNext() const {
@@ -41,16 +44,25 @@ template <typename E>
 class SimpleLinkedList {
 private:
 	SimpleNode<E>* pHead;
+	int size;
 
 public:
 	SimpleLinkedList() {
 		this->pHead = nullptr;
+		this->size = 0;
 	}
 
-	//template typename<E>
+	~SimpleLinkedList() {
+		//TODO - clear?
+	}
+
 	void add(SimpleNode<E>* pNode) {
-		if (this->pHead == nullptr)
+		if (pNode == nullptr)
+			throw invalid_argument("New node data cannot be null!");
+
+		if (this->pHead == nullptr) {
 			pHead = pNode;
+		}
 		else
 		{
 			SimpleNode<E>* pCurrent = pHead; //Node(10)
@@ -65,21 +77,47 @@ public:
 			}
 			pCurrent->setNext(pNode);
 		}
+
+		this->size++;
 	}
 
-	int size()
+	int count()
 	{
+		return this->size;
 	}
 
 	int search(E target)
 	{
+		auto pred = [target](int value) { return target == value; };
+		return search(pred);
 	}
 
-	int search(function<bool(E)> predicate) {
+	int search(function<bool(E)> predicate)
+	{
+		//store position
+		int index = 0;
+		//iterate through each node
+		SimpleNode<E>* pNext = pHead;
+
+		//until we hit the tail
+		while (pNext != nullptr) {
+			//test the predicate
+			if (predicate(pNext->getData()))
+				return index;
+
+			//continue with next
+			pNext = pNext->getNext();
+
+			//increment index
+			index++;
+		}
+
+		return -1;
 	}
 
 	void clear()
 	{
+		throw "Implement me!";
 	}
 
 	void print() const {
