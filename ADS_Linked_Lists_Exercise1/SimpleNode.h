@@ -11,6 +11,82 @@ using namespace std;
 
 */
 
+template <typename E>
+class SimpleNode {
+private:
+	SimpleNode* pNext;
+	E data;
+
+public:
+	SimpleNode(E data) {
+		this->data = data;
+		pNext = nullptr;
+	}
+
+	SimpleNode* getNext() const {
+		return this->pNext;
+	}
+
+	void setNext(SimpleNode* pNode) {
+		this->pNext = pNode;
+	}
+
+	string toString() const {
+		return to_string(this->data); //type must to convertible to string using to_string
+	}
+};
+
+template <typename E>
+class SimpleLinkedList {
+private:
+	SimpleNode<E>* pHead;
+
+public:
+	SimpleLinkedList() {
+		this->pHead = nullptr;
+	}
+
+	void add(SimpleNode* pNode) {
+		if (this->pHead == nullptr)
+			pHead = pNode;
+		else
+		{
+			SimpleNode* pCurrent = pHead; //Node(10)
+			SimpleNode* pNext = pHead->getNext(); //nullptr
+
+			while (pNext != nullptr) {
+				//store the last non-null node
+				pCurrent = pNext;
+
+				//traversing the list
+				pNext = pNext->getNext();
+			}
+			pCurrent->setNext(pNode);
+		}
+	}
+
+	int search(E target)
+	{
+	}
+
+	void clear()
+	{
+	}
+
+	int size()
+	{
+	}
+
+	void print() const {
+		SimpleNode* pNext = pHead;
+		while (pNext != nullptr) {
+			cout << pNext->toString() << endl;
+			pNext = pNext->getNext();
+		}
+	}
+};
+
+/*
 class SimpleNode {
 private:
 	SimpleNode* pNext;
@@ -26,9 +102,9 @@ public:
 		return this->pNext;
 	}
 
-	void setNext(SimpleNode* pNode) /*const*/ {
-		this->pNext = pNode;
-	}
+	void setNext(SimpleNode* pNode) {
+	this->pNext = pNode;
+}
 
 	string toString() const {
 		return to_string(this->data);
@@ -83,3 +159,5 @@ public:
 		}
 	}
 };
+
+*/
