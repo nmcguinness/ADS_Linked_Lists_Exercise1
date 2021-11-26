@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <functional>
 
 using namespace std;
 
@@ -66,15 +67,18 @@ public:
 		}
 	}
 
+	int size()
+	{
+	}
+
 	int search(E target)
 	{
 	}
 
-	void clear()
-	{
+	int search(function<bool(E)> predicate) {
 	}
 
-	int size()
+	void clear()
 	{
 	}
 
