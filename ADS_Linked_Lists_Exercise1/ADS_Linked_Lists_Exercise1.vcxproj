@@ -142,6 +142,7 @@
     <ClCompile Include="ADS_Linked_Lists_Exercise1.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="SimpleNode.h" />
     <ClInclude Include="SList.h" />
     <ClInclude Include="SListIterator.h" />
     <ClInclude Include="SListNode.h" />
