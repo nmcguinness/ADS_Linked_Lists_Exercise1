@@ -3,6 +3,14 @@
 
 using namespace std;
 
+/*
+1. template
+2. size, clear
+3. search
+4. predicate
+
+*/
+
 class SimpleNode {
 private:
 	SimpleNode* pNext;
@@ -52,15 +60,19 @@ public:
 				pNext = pNext->getNext();
 			}
 			pCurrent->setNext(pNode);
-
-			//SimpleNode* pNext = pHead->getNext();
-			//while (pNext != nullptr) {
-			//	pNext = pNext->getNext();
-			//}
-
-			////end of the node list
-			//pNext = pNode;
 		}
+	}
+
+	int search(int target)
+	{
+	}
+
+	void clear()
+	{
+	}
+
+	int size()
+	{
 	}
 
 	void print() const {
