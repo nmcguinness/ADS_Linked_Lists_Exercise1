@@ -46,13 +46,14 @@ public:
 		this->pHead = nullptr;
 	}
 
-	void add(SimpleNode* pNode) {
+	//template typename<E>
+	void add(SimpleNode<E>* pNode) {
 		if (this->pHead == nullptr)
 			pHead = pNode;
 		else
 		{
-			SimpleNode* pCurrent = pHead; //Node(10)
-			SimpleNode* pNext = pHead->getNext(); //nullptr
+			SimpleNode<E>* pCurrent = pHead; //Node(10)
+			SimpleNode<E>* pNext = pHead->getNext(); //nullptr
 
 			while (pNext != nullptr) {
 				//store the last non-null node
@@ -78,7 +79,7 @@ public:
 	}
 
 	void print() const {
-		SimpleNode* pNext = pHead;
+		SimpleNode<E>* pNext = pHead;
 		while (pNext != nullptr) {
 			cout << pNext->toString() << endl;
 			pNext = pNext->getNext();

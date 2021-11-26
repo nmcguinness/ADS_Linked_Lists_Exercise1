@@ -8,22 +8,20 @@ using namespace std;
 
 void simpleNodeDemo()
 {
-	SimpleNode first(10);
-
+	SimpleNode<int> first(10);
 	auto pNext = first.getNext();
-
 	cout << first.toString() << endl;
 }
 
 void simpleLinkedListDemo() {
 	//make list
-	SimpleLinkedList intList;
+	SimpleLinkedList<int> intList;
 
 	//make some nodes
-	SimpleNode n1(10);
-	SimpleNode n2(20);
-	SimpleNode n3(30);
-	SimpleNode n4(40);
+	SimpleNode<int> n1(10);
+	SimpleNode<int> n2(20);
+	SimpleNode<int> n3(30);
+	SimpleNode<int> n4(40);
 
 	//add the node to the list
 	intList.add(&n1); //pointerize an object by using & operator -> return address of object
@@ -35,6 +33,19 @@ void simpleLinkedListDemo() {
 	intList.print();
 }
 
+void simpleLinkedListSizeDemo() {
+	//make list
+	SimpleLinkedList<int> intList;
+
+	//make some nodes
+	SimpleNode<int> n1(10);
+	SimpleNode<int> n2(20);
+	SimpleNode<int> n3(30);
+	SimpleNode<int> n4(40);
+
+	//test size
+}
+
 int main()
 {
 	//cout << "simpleNodeDemo..." << endl;
@@ -42,4 +53,7 @@ int main()
 
 	cout << "simpleLinkedListDemo..." << endl;
 	simpleLinkedListDemo();
+
+	cout << "simpleLinkedListSizeDemo..." << endl;
+	simpleLinkedListSizeDemo();
 }
